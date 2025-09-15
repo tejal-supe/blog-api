@@ -2,11 +2,12 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import userRouter from "./routes/user.route.js";
+import config from "./config/environment.js";
 
 const app = express();
 app.use(
   cors({
-    origin: "",
+    origin: config.base_url,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
