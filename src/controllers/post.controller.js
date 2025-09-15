@@ -3,9 +3,9 @@ import Post from "../models/post.model.js";
 
 export const createBlogPost = async (req, res) => {
   try {
-    const { title, slug, content, categoryId } = req.body;
+    const { title, content, categoryId } = req.body;
     const { _id } = req.user;
-    if (!title || !slug || !content) {
+    if (!title || !content) {
       return res.status(400).json({ message: "Enter all the details" });
     }
     if (categoryId) {
@@ -18,7 +18,6 @@ export const createBlogPost = async (req, res) => {
     }
     const post = await Post.create({
       title,
-      slug,
       content,
       category: categoryId,
       author: _id,
